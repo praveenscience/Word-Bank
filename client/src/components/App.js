@@ -6,7 +6,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header className="Header" dark={true}>
+        <Header className="Header fixed-top" dark={true}>
           <img src={Logo} alt="Word Bank Logo" />
           Word Bank
         </Header>
