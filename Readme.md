@@ -1,6 +1,5 @@
-# Word Bank
+Welcome to Word Bank - Your daily dose of Word Bites. Share your daily knowledge!
 
-> _Your daily dose of Word Bites. Share your daily knowledge!_
 
 ## Introduction
 
