@@ -1,0 +1,76 @@
+.inp {
+  background-color: rgb(46, 43, 43);
+  height: 500px;
+  width: 450px;
+  position: absolute;
+  top: 55%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+}
+.head {
+  height: 40px;
+  width: 430px;
+  background-color: transparent;
+  margin-top: 60px;
+  margin-left: 25px;
+  padding-top: 2px;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+}
+.head input {
+  height: 20px;
+  width: 20px;
+  margin-right: 35px;
+  margin-left: 10px;
+  border: 2px solid rgb(252, 137, 6);
+}
+hr {
+  background-color: white;
+  width: 370px;
+  margin-left: 15px;
+}
+h1 {
+  color: white;
+  text-align: center;
+  margin-top: 20px;
+}
+#in {
+  position: absolute;
+  margin-top: 60px;
+  margin-left: 35px;
+  width: 250px;
+  height: 35px;
+  font-weight: 900;
+  font-size: 20px;
+}
+button {
+  position: absolute;
+  margin-top: 60px;
+  margin-left: 300px;
+  width: 7rem;
+}
+#area {
+  position: absolute;
+  margin-top: 150px;
+  margin-left: 35px;
+  width: 380px;
+  height: 130px;
+  font-weight: 900;
+  font-size: 20px;
+  resize: none;
+}
+h5 {
+  position: absolute;
+  margin-top: 120px;
+  margin-left: 35px;
+  color: white;
+}
+h6 {
+  color: rgb(235, 252, 4);
+  position: absolute;
+  margin-top: 35px;
+  margin-left: 35px;
+  padding-bottom: 0px;
+}

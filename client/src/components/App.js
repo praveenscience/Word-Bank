@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import Header from "./Header/Header";
 import Logo from "../assets/logo/logo-light.png";
-import Body from "./Body";
-
+import InputWord from "./InputWord";
 class App extends Component {
   render() {
     return (
@@ -11,7 +10,7 @@ class App extends Component {
           <img src={Logo} alt="Word Bank Logo" />
           Word Bank
         </Header>
-        <Body />
+        <InputWord />
       </div>
     );
   }
