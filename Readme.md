@@ -4,7 +4,7 @@
 
 ## Introduction
 
-In Word Bank we are going to use for learning new words and improving vocabulary skills.
+In Word Bank we are going to use for learning new words and improving vocabulary skills.Daily we post five words.
 
 ## Setting up Locally
 
