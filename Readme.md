@@ -1,6 +1,6 @@
 # Welcome to Word Bank - Your daily dose of Word Bites. Share your daily knowledge!
 
-[![first-timers-only](https://img.shields.io/badge/first--timers--only-friendly-tomato.svg?style=flat&logo=git)](https://github.com/praveenscience/Word-Bank/issues)[![GitHub stars](https://img.shields.io/github/stars/praveenscience/Rezume.svg?logo=github)](https://github.com/praveenscience/Word-Bank/stargazers) [![GitHub forks](https://img.shields.io/github/forks/praveenscience/Rezume.svg?logo=github&color=teal)](https://github.com/praveenscience/Word-Bank/network)
+[![first-timers-only](https://img.shields.io/badge/first--timers--only-friendly-tomato.svg?style=flat&logo=git)](https://github.com/praveenscience/Word-Bank/issues)
 
 Word-Bank is knowledge; the knowledge of a word not only implies a definition, but also implies how that word fits into the world.” We continue to adding and sharing daily knowledge.Words are powerful. Words open up possibilities, and of course, that’s what we want for all of us.
 
