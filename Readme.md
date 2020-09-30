@@ -4,7 +4,7 @@
 
 ## Introduction
 
-In Word Bank we are going to use for learning new words and improving vocabulary skills.Daily we post five words.
+Word Bank is used for insertion of different words everyday. This is mainly used to improve the vocabulary skills and acquire knowledge. We insert everyday five words with sentence which shows how to use that particular word when required.
 
 ## Setting up Locally
 
