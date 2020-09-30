@@ -25,7 +25,6 @@ Word-Bank is knowledge; the knowledge of a word not only implies a definition, b
 - Word-Bank words (rich, robust instruction) to support understanding of texts containing those words.
 - word-Bank strategies that students can use independently.
 - Motivate and engage us in learning new words.
-- To facilitate students and working professionals to making daily dose of Word Bites. Share your daily five words and improving your vocabulary.
 
 ## Tech Stack
 
@@ -50,3 +49,45 @@ As this is a React JS application, you need the following to support your develo
   6. [ES7 React/Redux/GraphQL/React-Native snippets](https://marketplace.visualstudio.com/items?itemName=dsznajder.es7-react-js-snippets) provides you JavaScript and React/Redux snippets in ES7 with Babel plugin features for VS Code.
   7. [Todo Tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree) `(optional)` quickly searches (using ripgrep) your workspace for comment tags like TODO and FIXME, and displays them in a tree view in the explorer pane. Clicking a TODO within the tree will open the file and put the cursor on the line containing the TODO.
   8. [`vscode-icons`](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons) `(optional)` is more of a cosmetic thing, which brings icons to the Visual Studio Code editor.
+
+### Installation Instructions
+
+[Create React App](https://github.com/facebookincubator/create-react-app) is a comfortable environment for **learning React**, and is the best way to start building **a new [single-page](https://reactjs.org/docs/glossary.html#single-page-application) application** in React. This project makes use of Create React App. It sets up your development environment so that you can use the latest JavaScript features, provides a nice developer experience, and optimises your app for production. You’ll need to have [Node >= 8.10 and npm >= 5.6](https://nodejs.org/en/) on your machine.
+
+### Running the Application Locally
+
+**First Time Only**
+
+1. [Fork](https://help.github.com/en/github/getting-started-with-github/fork-a-repo) the project.
+2. Clone the project.
+   ```bash
+   git clone /https://praveenscience@github.com/praveenscience/Word-Bank.git
+   ```
+3. Enter the project directory.
+   ```bash
+   cd Word-Bank
+   ```
+4. Enter the project specific directory.
+   ```bash
+   cd  client
+   ```
+5. Install the required modules.
+   ```bash
+   npm install
+   ```
+
+**Every time when you start to develop, please do this.**
+
+1. Enter the project directory.
+   ```bash
+   cd Word-Bank
+   ```
+2. Enter the project specific directory.
+   ```bash
+   cd client
+   ```
+3. Start the application.
+   ```bash
+   npm start
+   ```
+4. Open http://localhost:3000/ on your favourite browser. Let anyone from the mentoring team know, if you are facing any troubles.
