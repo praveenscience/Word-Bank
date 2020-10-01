@@ -8,6 +8,9 @@ class App extends Component {
   state = {
     User: null
   };
+  handleLogin = e => {
+    e.preventDefault();
+  };
   render() {
     return (
       <div className="App">
@@ -22,7 +25,7 @@ class App extends Component {
               Title="Login to Word Bank"
               Text="Please enter your username and password here to sign in to the system."
             >
-              <form>
+              <form onSubmit={this.handleLogin}>
                 <button type="submit" className="btn btn-primary">
                   Login
                 </button>
