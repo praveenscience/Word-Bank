@@ -10,8 +10,6 @@ class App extends Component {
           <img src={Logo} alt="Word Bank Logo" />
           Word Bank
         </Header>
-        <InputWord />
-        <InputWord />
       </div>
     );
   }
