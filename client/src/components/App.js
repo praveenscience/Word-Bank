@@ -11,6 +11,7 @@ class App extends Component {
           Word Bank
         </Header>
         <InputWord />
+        <InputWord />
       </div>
     );
   }

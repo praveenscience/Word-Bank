@@ -4,7 +4,7 @@
   width: 450px;
   position: absolute;
   top: 55%;
-  left: 25%;
+  left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 10px;
 }
@@ -24,7 +24,8 @@
   width: 20px;
   margin-right: 35px;
   margin-left: 10px;
-  border: 2px solid rgb(252, 137, 6);
+  background-color: rgb(243, 19, 19);
+  outline: orange;
 }
 hr {
   background-color: white;
