@@ -63,10 +63,10 @@ class App extends Component {
             </div>
           ) : (
             <>
-              <div className="col-6">
+              <div className="col-12 mb-3 mb-md-0 col-md-6">
                 <Login onSubmit={this.handleLogin} />
               </div>
-              <div className="col-6">
+              <div className="col-12 col-md-6">
                 <Register />
               </div>
             </>

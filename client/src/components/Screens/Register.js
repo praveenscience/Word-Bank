@@ -6,7 +6,7 @@ const Register = ({ onSubmit }) => {
     <Card
       Header="Register"
       Title="Register for Word Bank"
-      Text="Please register to access Word Bank."
+      Text="Please register to access Word Bank and add new words to the system."
     >
       <form onSubmit={onSubmit}>
         <button type="submit" className="btn btn-primary">
