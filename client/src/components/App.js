@@ -39,6 +39,12 @@ class App extends Component {
       }
     );
   };
+  componentDidMount() {
+    // Check if local storage is supported.
+    if (typeof Storage !== "undefined") {
+      this.setState(JSON.parse(window.localStorage.getItem("state")));
+    }
+  }
   render() {
     const { User } = this.state;
     return (
