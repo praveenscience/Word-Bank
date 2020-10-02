@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import Header from "./Header/Header";
 import ContainerRow from "./Bootstrap/ContainerRow";
-import Card from "./Bootstrap/Card";
 import Logo from "../assets/logo/logo-light.png";
+// import Console from "../helpers/Console";
+import Login from "./Screens/Login";
+import Register from "./Screens/Register";
+import Welcome from "./Screens/Welcome";
 
 class App extends Component {
   state = {
@@ -54,36 +57,20 @@ class App extends Component {
           Word Bank
         </Header>
         <ContainerRow fluid={true} className="my-3">
-          <div className="col-6">
-            <Card
-              Header={User ? "Welcome" : "Login"}
-              Title={(User ? "Welcome" : "Login") + " to Word Bank"}
-              Text={
-                User
-                  ? "Please add your nice words here."
-                  : "Please enter your username and password here to sign in to the system."
-              }
-            >
-              <form onSubmit={!User ? this.handleLogin : this.handleLogout}>
-                <button type="submit" className="btn btn-primary">
-                  {User ? "Logout" : "Login"}
-                </button>
-              </form>
-            </Card>
-          </div>
-          <div className="col-6">
-            <Card
-              Header="Register"
-              Title="Register for Word Bank"
-              Text="Please register to access Word Bank."
-            >
-              <form>
-                <button type="submit" className="btn btn-primary">
-                  Register
-                </button>
-              </form>
-            </Card>
-          </div>
+          {User ? (
+            <div className="col-12">
+              <Welcome onSubmit={this.handleLogout} />
+            </div>
+          ) : (
+            <>
+              <div className="col-6">
+                <Login onSubmit={this.handleLogin} />
+              </div>
+              <div className="col-6">
+                <Register />
+              </div>
+            </>
+          )}
         </ContainerRow>
       </div>
     );
