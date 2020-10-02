@@ -10,18 +10,34 @@ class App extends Component {
   };
   handleLogin = e => {
     e.preventDefault();
-    this.setState({
-      User: {
-        UserName: "Praveen",
-        FullName: "Praveen Kumar Purushothaman"
+    this.setState(
+      {
+        User: {
+          UserName: "Praveen",
+          FullName: "Praveen Kumar Purushothaman"
+        }
+      },
+      () => {
+        // Check if local storage is supported.
+        if (typeof Storage !== "undefined") {
+          window.localStorage.setItem("state", JSON.stringify(this.state));
+        }
       }
-    });
+    );
   };
   handleLogout = e => {
     e.preventDefault();
-    this.setState({
-      User: null
-    });
+    this.setState(
+      {
+        User: null
+      },
+      () => {
+        // Check if local storage is supported.
+        if (typeof Storage !== "undefined") {
+          window.localStorage.setItem("state", JSON.stringify(this.state));
+        }
+      }
+    );
   };
   render() {
     const { User } = this.state;
