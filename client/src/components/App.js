@@ -3,24 +3,24 @@ import Header from "./Header/Header";
 import ContainerRow from "./Bootstrap/ContainerRow";
 import Card from "./Bootstrap/Card";
 import Logo from "../assets/logo/logo-light.png";
-import InputWord from "./InputWord";
+
 class App extends Component {
   state = {
-    User: null
+    User: null,
   };
-  handleLogin = e => {
+  handleLogin = (e) => {
     e.preventDefault();
     this.setState({
       User: {
         UserName: "Praveen",
-        FullName: "Praveen Kumar Purushothaman"
-      }
+        FullName: "Praveen Kumar Purushothaman",
+      },
     });
   };
-  handleLogout = e => {
+  handleLogout = (e) => {
     e.preventDefault();
     this.setState({
-      User: null
+      User: null,
     });
   };
   render() {

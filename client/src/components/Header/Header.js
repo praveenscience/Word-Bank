@@ -12,5 +12,4 @@ const Header = ({ dark, children, className }) => {
     </nav>
   );
 };
-
 export default Header;
