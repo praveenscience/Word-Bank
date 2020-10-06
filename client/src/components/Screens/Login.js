@@ -3,6 +3,7 @@ import Card from "../Bootstrap/Card";
 import FormGroup from "../Bootstrap/Forms/FormGroup";
 
 const Login = ({ onChange, onSubmit, Values }) => {
+  const onInputChange = () => {};
   return (
     <Card
       Header="Login"
@@ -21,6 +22,7 @@ const Login = ({ onChange, onSubmit, Values }) => {
             Type={fg.Type}
             Value={Values[fg.Label.toLowerCase()]}
             Placeholder={"Please enter your " + fg.Label.toLowerCase() + "."}
+            onChange={onInputChange}
             Desc={
               "Please enter your " +
               fg.Label.toLowerCase() +

@@ -3,6 +3,7 @@ import Card from "../Bootstrap/Card";
 import FormGroup from "../Bootstrap/Forms/FormGroup";
 
 const Register = ({ onChange, onSubmit, Values }) => {
+  const onInputChange = () => {};
   return (
     <Card
       Header="Register"
@@ -50,7 +51,12 @@ const Register = ({ onChange, onSubmit, Values }) => {
             Desc: "Please enter your email address so we can send you spam."
           }
         ].map((fg, key) => (
-          <FormGroup key={key} {...fg} Value={Values[fg.ID]} />
+          <FormGroup
+            key={key}
+            {...fg}
+            onChange={onInputChange}
+            Value={Values[fg.ID]}
+          />
         ))}
         <button type="submit" className="btn btn-primary">
           Register
