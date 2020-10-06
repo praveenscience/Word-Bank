@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Header from "./Header/Header";
 import ContainerRow from "./Bootstrap/ContainerRow";
 import Logo from "../assets/logo/logo-light.png";
-import Console from "../helpers/Console";
+// import Console from "../helpers/Console";
 import Login from "./Screens/Login";
 import Register from "./Screens/Register";
 import Welcome from "./Screens/Welcome";
@@ -95,7 +95,6 @@ class App extends Component {
                   onChange={e => this.handleChange("Login", e)}
                   Values={this.state.Form.Login}
                 />
-                <Console data={this.state} />
               </div>
               <div className="col-12 col-md-6">
                 <Register
