@@ -18,10 +18,14 @@ const Login = ({ onChange, onSubmit, Values }) => {
           <FormGroup
             key={key}
             ID={fg.Label.toLowerCase()}
-            Label={fg.Label}
+            Label={fg.Label.replace("Login", "")}
             Type={fg.Type}
             Value={Values[fg.Label.toLowerCase()]}
-            Placeholder={"Please enter your " + fg.Label.toLowerCase() + "."}
+            Placeholder={
+              "Please enter your " +
+              fg.Label.replace("Login", "").toLowerCase() +
+              "."
+            }
             onChange={onInputChange}
             Desc={
               "Please enter your " +
