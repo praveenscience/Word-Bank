@@ -7,22 +7,29 @@ import Login from "./Screens/Login";
 import Register from "./Screens/Register";
 import Welcome from "./Screens/Welcome";
 
+const InitialForm = {
+  Login: {
+    loginusername: "",
+    loginpassword: ""
+  },
+  Register: {
+    fullname: "",
+    username: "",
+    password: "",
+    confpass: "",
+    email: ""
+  }
+};
+
 class App extends Component {
   state = {
     User: null,
-    Form: {
-      Login: {
-        loginusername: "",
-        loginpassword: ""
-      },
-      Register: {
-        fullname: "",
-        username: "",
-        password: "",
-        confpass: "",
-        email: ""
-      }
-    }
+    Form: InitialForm
+  };
+  resetForm = () => {
+    this.setState({
+      Form: InitialForm
+    });
   };
   handleChange = (form, e) => {
     const Form = JSON.parse(JSON.stringify(this.state.Form));
