@@ -2,14 +2,33 @@ import React, { Component } from "react";
 import Header from "./Header/Header";
 import ContainerRow from "./Bootstrap/ContainerRow";
 import Logo from "../assets/logo/logo-light.png";
-// import Console from "../helpers/Console";
+import Console from "../helpers/Console";
 import Login from "./Screens/Login";
 import Register from "./Screens/Register";
 import Welcome from "./Screens/Welcome";
 
 class App extends Component {
   state = {
-    User: null
+    User: null,
+    Form: {
+      Login: {
+        username: "praveen",
+        password: "React"
+      },
+      Register: {
+        fullname: "fullname",
+        username: "username",
+        password: "password",
+        confpass: "confpass",
+        email: "email"
+      }
+    }
+  };
+  handleChange = (form, e) => {
+    const Form = JSON.parse(JSON.stringify(this.state.Form));
+    const { name, value } = e.target;
+    Form[form][name] = value;
+    this.setState({ Form });
   };
   handleLogin = e => {
     e.preventDefault();
@@ -64,10 +83,18 @@ class App extends Component {
           ) : (
             <>
               <div className="col-12 mb-3 mb-md-0 col-md-6">
-                <Login onSubmit={this.handleLogin} />
+                <Login
+                  onSubmit={this.handleLogin}
+                  onChange={e => this.handleChange("Login", e)}
+                  Values={this.state.Form.Login}
+                />
+                <Console data={this.state} />
               </div>
               <div className="col-12 col-md-6">
-                <Register />
+                <Register
+                  onChange={e => this.handleChange("Register", e)}
+                  Values={this.state.Form.Register}
+                />
               </div>
             </>
           )}

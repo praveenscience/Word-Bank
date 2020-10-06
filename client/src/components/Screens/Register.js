@@ -2,7 +2,7 @@ import React from "react";
 import Card from "../Bootstrap/Card";
 import FormGroup from "../Bootstrap/Forms/FormGroup";
 
-const Register = ({ onChange, onSubmit }) => {
+const Register = ({ onChange, onSubmit, Values }) => {
   return (
     <Card
       Header="Register"
@@ -50,7 +50,7 @@ const Register = ({ onChange, onSubmit }) => {
             Desc: "Please enter your email address so we can send you spam."
           }
         ].map((fg, key) => (
-          <FormGroup key={key} {...fg} />
+          <FormGroup key={key} {...fg} Value={Values[fg.ID]} />
         ))}
         <button type="submit" className="btn btn-primary">
           Register

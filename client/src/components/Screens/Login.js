@@ -2,7 +2,7 @@ import React from "react";
 import Card from "../Bootstrap/Card";
 import FormGroup from "../Bootstrap/Forms/FormGroup";
 
-const Login = ({ onChange, onSubmit }) => {
+const Login = ({ onChange, onSubmit, Values }) => {
   return (
     <Card
       Header="Login"
@@ -19,6 +19,7 @@ const Login = ({ onChange, onSubmit }) => {
             ID={fg.Label.toLowerCase()}
             Label={fg.Label}
             Type={fg.Type}
+            Value={Values[fg.Label.toLowerCase()]}
             Placeholder={"Please enter your " + fg.Label.toLowerCase() + "."}
             Desc={
               "Please enter your " +
