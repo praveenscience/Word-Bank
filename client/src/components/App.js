@@ -12,15 +12,15 @@ class App extends Component {
     User: null,
     Form: {
       Login: {
-        loginusername: "praveen",
-        loginpassword: "React"
+        loginusername: "",
+        loginpassword: ""
       },
       Register: {
-        fullname: "fullname",
-        username: "username",
-        password: "password",
-        confpass: "confpass",
-        email: "email"
+        fullname: "",
+        username: "",
+        password: "",
+        confpass: "",
+        email: ""
       }
     }
   };
