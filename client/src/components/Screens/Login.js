@@ -12,8 +12,8 @@ const Login = ({ onChange, onSubmit, Values }) => {
     >
       <form onChange={onChange} onSubmit={onSubmit}>
         {[
-          { Label: "Username", Type: "text" },
-          { Label: "Password", Type: "password" }
+          { Label: "LoginUsername", Type: "text" },
+          { Label: "LoginPassword", Type: "password" }
         ].map((fg, key) => (
           <FormGroup
             key={key}

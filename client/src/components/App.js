@@ -12,8 +12,8 @@ class App extends Component {
     User: null,
     Form: {
       Login: {
-        username: "praveen",
-        password: "React"
+        loginusername: "praveen",
+        loginpassword: "React"
       },
       Register: {
         fullname: "fullname",
