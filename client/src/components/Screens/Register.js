@@ -50,14 +50,7 @@ const Register = ({ onChange, onSubmit }) => {
             Desc: "Please enter your email address so we can send you spam."
           }
         ].map((fg, key) => (
-          <FormGroup
-            key={key}
-            ID={fg.ID}
-            Label={fg.Label}
-            Type={fg.Type}
-            Placeholder={fg.Placeholder}
-            Desc={fg.Desc}
-          />
+          <FormGroup key={key} {...fg} />
         ))}
         <button type="submit" className="btn btn-primary">
           Register
