@@ -10,20 +10,23 @@ const Login = ({ onChange, onSubmit }) => {
       Text="Please enter your username and password here to sign in to the system."
     >
       <form onChange={onChange} onSubmit={onSubmit}>
-        <FormGroup
-          ID="username"
-          Label="Username"
-          Type="text"
-          Placeholder="Please enter your username."
-          Desc="Please enter your username that you created during registration process."
-        />
-        <FormGroup
-          ID="password"
-          Label="Password"
-          Type="password"
-          Placeholder="Please enter your password."
-          Desc="Please enter your password that you created during registration process."
-        />
+        {[
+          { Label: "Username", Type: "text" },
+          { Label: "Password", Type: "password" }
+        ].map((fg, key) => (
+          <FormGroup
+            key={key}
+            ID={fg.Label.toLowerCase()}
+            Label={fg.Label}
+            Type={fg.Type}
+            Placeholder={"Please enter your " + fg.Label.toLowerCase() + "."}
+            Desc={
+              "Please enter your " +
+              fg.Label.toLowerCase() +
+              " that you created during registration process."
+            }
+          />
+        ))}
         <button type="submit" className="btn btn-primary">
           Login
         </button>
