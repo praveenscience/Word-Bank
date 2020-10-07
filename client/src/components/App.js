@@ -113,13 +113,7 @@ class App extends Component {
   handleRegister = e => {
     e.preventDefault();
     const Errors = [];
-    const {
-      fullname: FullName,
-      username: UserName,
-      password,
-      confpass,
-      email
-    } = this.state.Form.Register;
+    const { username: UserName, password, confpass } = this.state.Form.Register;
     if (
       UserName.trim().length > 3 &&
       password.trim().length > 3 &&
