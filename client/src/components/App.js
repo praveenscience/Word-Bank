@@ -120,6 +120,11 @@ class App extends Component {
       password === confpass &&
       !Users[UserName]
     ) {
+      Users[UserName] = password;
+      this.setState({
+        User: { UserName, FullName: UserName },
+        Form: InitialForm
+      });
     } else {
       if (!(UserName.trim().length > 3 && password.trim().length > 3)) {
         Errors.push(
