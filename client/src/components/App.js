@@ -33,6 +33,12 @@ class App extends Component {
       Form: InitialForm
     });
   };
+  saveState = () => {
+    // Check if local storage is supported.
+    if (typeof Storage !== "undefined") {
+      window.localStorage.setItem("state", JSON.stringify(this.state));
+    }
+  };
   handleChange = (form, e) => {
     const Form = JSON.parse(JSON.stringify(this.state.Form));
     const { name, value } = e.target;
@@ -48,9 +54,12 @@ class App extends Component {
     if (UserName.trim().length > 3 && password.trim().length > 3) {
       const Form = { ...this.state.Form };
       Form.Login.Error = null;
-      this.setState({
-        Form
-      });
+      this.setState(
+        {
+          Form
+        },
+        this.saveState
+      );
       // Hardcode Username and Passwords.
       const Users = {
         Praveen: "Hello@123",
@@ -62,30 +71,42 @@ class App extends Component {
         angle: "hello@12"
       };
       if (Users[UserName] && Users[UserName] === password) {
-        this.setState({
-          User: { UserName, FullName: UserName },
-          Form: InitialForm
-        });
+        this.setState(
+          {
+            User: { UserName, FullName: UserName },
+            Form: InitialForm
+          },
+          this.saveState
+        );
       } else if (!Users[UserName]) {
         const Form = { ...this.state.Form };
         Form.Login.Error = "User not found.";
-        this.setState({
-          Form
-        });
+        this.setState(
+          {
+            Form
+          },
+          this.saveState
+        );
       } else {
         const Form = { ...this.state.Form };
         Form.Login.Error = "Invalid username and password combination.";
-        this.setState({
-          Form
-        });
+        this.setState(
+          {
+            Form
+          },
+          this.saveState
+        );
       }
     } else {
       const Form = { ...this.state.Form };
       Form.Login.Error =
         "You need to enter both username and password and they should be more than 3 characters.";
-      this.setState({
-        Form
-      });
+      this.setState(
+        {
+          Form
+        },
+        this.saveState
+      );
     }
   };
   handleLogout = e => {
@@ -95,12 +116,7 @@ class App extends Component {
         User: null,
         Form: InitialForm
       },
-      () => {
-        // Check if local storage is supported.
-        if (typeof Storage !== "undefined") {
-          window.localStorage.setItem("state", JSON.stringify(this.state));
-        }
-      }
+      this.saveState
     );
   };
   componentDidMount() {
