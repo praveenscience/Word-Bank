@@ -1,11 +1,11 @@
 import React from "react";
 import Card from "../Bootstrap/Card";
 
-const Welcome = ({ onChange, onSubmit }) => {
+const Welcome = ({ User, onChange, onSubmit }) => {
   return (
     <Card
       Header="Welcome"
-      Title="Welcome to Word Bank"
+      Title={"Welcome to Word Bank, " + User.FullName}
       Text="Please add your nice words here."
     >
       <form onChange={onChange} onSubmit={onSubmit}>

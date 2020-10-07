@@ -136,7 +136,7 @@ class App extends Component {
         <ContainerRow fluid={true} className="my-3">
           {User ? (
             <div className="col-12">
-              <Welcome onSubmit={this.handleLogout} />
+              <Welcome User={this.state.User} onSubmit={this.handleLogout} />
             </div>
           ) : (
             <>
