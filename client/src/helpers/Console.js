@@ -1,8 +1,12 @@
 import React from "react";
 
-const Console = ({ data }) => {
+const Console = ({ className, data }) => {
   return (
-    <pre className="border bg-light rounded p-2 m-3">
+    <pre
+      className={
+        "border bg-light rounded p-2" + (className ? " " + className : "")
+      }
+    >
       {JSON.stringify(data, null, 2)}
     </pre>
   );
