@@ -11,6 +11,9 @@ const Register = ({ onChange, onSubmit, Values }) => {
       Text="Please register to access Word Bank and add new words to the system."
     >
       <form onChange={onChange} onSubmit={onSubmit}>
+        {Values.Error && (
+          <div className="alert alert-danger">{Values.Error}</div>
+        )}
         {[
           {
             ID: "fullname",

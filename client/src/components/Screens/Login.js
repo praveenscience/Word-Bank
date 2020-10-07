@@ -11,6 +11,9 @@ const Login = ({ onChange, onSubmit, Values }) => {
       Text="Please enter your username and password here to sign in to the system."
     >
       <form onChange={onChange} onSubmit={onSubmit}>
+        {Values.Error && (
+          <div className="alert alert-danger">{Values.Error}</div>
+        )}
         {[
           { Label: "LoginUsername", Type: "text" },
           { Label: "LoginPassword", Type: "password" }
