@@ -66,6 +66,18 @@ class App extends Component {
           User: { UserName, FullName: UserName },
           Form: InitialForm
         });
+      } else if (!Users[UserName]) {
+        const Form = { ...this.state.Form };
+        Form.Login.Error = "User not found.";
+        this.setState({
+          Form
+        });
+      } else {
+        const Form = { ...this.state.Form };
+        Form.Login.Error = "Invalid username and password combination.";
+        this.setState({
+          Form
+        });
       }
     } else {
       const Form = { ...this.state.Form };
