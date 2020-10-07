@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Header from "./Header/Header";
 import ContainerRow from "./Bootstrap/ContainerRow";
 import Logo from "../assets/logo/logo-light.png";
-// import Console from "../helpers/Console";
+import Console from "../helpers/Console";
 import Login from "./Screens/Login";
 import Register from "./Screens/Register";
 import Welcome from "./Screens/Welcome";
@@ -10,14 +10,16 @@ import Welcome from "./Screens/Welcome";
 const InitialForm = {
   Login: {
     loginusername: "",
-    loginpassword: ""
+    loginpassword: "",
+    Error: null
   },
   Register: {
     fullname: "",
     username: "",
     password: "",
     confpass: "",
-    email: ""
+    email: "",
+    Error: null
   }
 };
 
@@ -39,26 +41,47 @@ class App extends Component {
   };
   handleLogin = e => {
     e.preventDefault();
-    this.setState(
-      {
-        User: {
-          UserName: "Praveen",
-          FullName: "Praveen Kumar Purushothaman"
-        }
-      },
-      () => {
-        // Check if local storage is supported.
-        if (typeof Storage !== "undefined") {
-          window.localStorage.setItem("state", JSON.stringify(this.state));
-        }
+    const {
+      loginusername: UserName,
+      loginpassword: password
+    } = this.state.Form.Login;
+    if (UserName.trim().length > 3 && password.trim().length > 3) {
+      const Form = { ...this.state.Form };
+      Form.Login.Error = null;
+      this.setState({
+        Form
+      });
+      // Hardcode Username and Passwords.
+      const Users = {
+        Praveen: "Hello@123",
+        AbhiVikrant: "1234@123",
+        Santosh: "12345",
+        Ruchita: "Carol@123",
+        Princy: "passw",
+        Nagaraj: "nagsvk123",
+        angle: "hello@12"
+      };
+      if (Users[UserName] && Users[UserName] === password) {
+        this.setState({
+          User: { UserName, FullName: UserName },
+          Form: InitialForm
+        });
       }
-    );
+    } else {
+      const Form = { ...this.state.Form };
+      Form.Login.Error =
+        "You need to enter both username and password and they should be more than 3 characters.";
+      this.setState({
+        Form
+      });
+    }
   };
   handleLogout = e => {
     e.preventDefault();
     this.setState(
       {
-        User: null
+        User: null,
+        Form: InitialForm
       },
       () => {
         // Check if local storage is supported.
@@ -95,6 +118,7 @@ class App extends Component {
                   onChange={e => this.handleChange("Login", e)}
                   Values={this.state.Form.Login}
                 />
+                <Console className="mt-3" data={this.state} />
               </div>
               <div className="col-12 col-md-6">
                 <Register
