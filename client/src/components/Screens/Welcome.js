@@ -1,5 +1,7 @@
 import React from "react";
+import { Route } from "react-router-dom";
 import Card from "../Bootstrap/Card";
+import Intro from "./Welcome/Intro";
 import List from "./Welcome/List";
 
 const Welcome = ({ User, onChange, onSubmit }) => {
@@ -27,7 +29,9 @@ const Welcome = ({ User, onChange, onSubmit }) => {
         <div className="col-2">
           <List />
         </div>
-        <div className="col-10"></div>
+        <div className="col-10">
+          <Route path="/" exact={true} component={Intro} />
+        </div>
       </div>
     </Card>
   );
