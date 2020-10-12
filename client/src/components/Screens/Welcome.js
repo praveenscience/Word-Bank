@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "../Bootstrap/Card";
+import List from "./Welcome/List";
 
 const Welcome = ({ User, onChange, onSubmit }) => {
   return (
@@ -21,7 +22,14 @@ const Welcome = ({ User, onChange, onSubmit }) => {
       Title={"Welcome to Word Bank, " + User.FullName}
       Text="Please add your nice words here."
       className="Welcome"
-    ></Card>
+    >
+      <div className="row">
+        <div className="col-2">
+          <List />
+        </div>
+        <div className="col-10"></div>
+      </div>
+    </Card>
   );
 };
 
