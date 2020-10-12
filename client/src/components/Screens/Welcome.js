@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 import Card from "../Bootstrap/Card";
 import Intro from "./Welcome/Intro";
 import List from "./Welcome/List";
+import Word from "./Welcome/Word";
 
 const Welcome = ({ User, onChange, onSubmit }) => {
   return (
@@ -31,6 +32,7 @@ const Welcome = ({ User, onChange, onSubmit }) => {
         </div>
         <div className="col-10">
           <Route path="/" exact={true} component={Intro} />
+          <Route path="/word/:wordId" render={rp => <Word {...rp} />} />
         </div>
       </div>
     </Card>
