@@ -1,4 +1,4 @@
-export default {
+const wordList = {
   hello: {
     Word: "Hello",
     Meaning: "Used as a greeting or to begin a telephone conversation.",
@@ -12,3 +12,4 @@ export default {
     User: ""
   }
 };
+export default wordList;

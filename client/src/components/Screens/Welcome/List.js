@@ -1,25 +1,24 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import Words from "../../../constants/DemoWords";
+import Word from "./Word";
 
-const List = () => {
+const List = wordList => {
   return (
     <div className="list-group">
       <pre className="border bg-light rounded p-2">
         {JSON.stringify(Words, null, 2)}
       </pre>
-      <NavLink
-        to="/word/Word1"
-        className="list-group-item list-group-item-action"
-      >
-        Word 1
-      </NavLink>
-      <NavLink
-        to="/word/Word2"
-        className="list-group-item list-group-item-action"
-      >
-        Word 2
-      </NavLink>
+      <Link to="/">Word</Link>
+      <ul>
+        {Word.map((wordList, key) => (
+          <li key={key}>
+            <NavLink to={"/word/" + key} activeClassName="active">
+              {wordList}
+            </NavLink>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
