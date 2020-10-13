@@ -4,9 +4,11 @@ const express = require("express");
 const app = express();
 // Set a port.
 const port = 3100;
+// Serve Static Stuff.
+app.use("/", express.static("static"));
 // Adding Routes.
 app.get("/", (req, res) => {
-  res.json("Hello LetsGrad!");
+  res.json("Here's WordBank API!");
 });
 // Listen the application to the port.
 app.listen(port, () => {
