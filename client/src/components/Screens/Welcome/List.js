@@ -4,23 +4,19 @@ import Words from "../../../constants/DemoWords";
 
 const List = () => {
   return (
-    <div className="list-group">
-      <pre className="border bg-light rounded p-2">
-        {JSON.stringify(Words, null, 2)}
-      </pre>
-      <NavLink
-        to="/word/Word1"
-        className="list-group-item list-group-item-action"
-      >
-        Word 1
-      </NavLink>
-      <NavLink
-        to="/word/Word2"
-        className="list-group-item list-group-item-action"
-      >
-        Word 2
-      </NavLink>
-    </div>
+    <>
+      <div className="list-group">
+        {Object.keys(Words).map((word, key) => (
+          <NavLink
+            to={"/word/" + word}
+            className="list-group-item list-group-item-action"
+            key={key}
+          >
+            {Words[word].Word}
+          </NavLink>
+        ))}
+      </div>
+    </>
   );
 };
 
