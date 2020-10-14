@@ -2,6 +2,7 @@
 const express = require("express");
 // Import API Routes
 const words = require("./api/words");
+const users = require("./api/users");
 // Import Express Routes
 const api = express.Router();
 
@@ -11,5 +12,6 @@ api.get("/", (req, res) => {
 });
 // Words API
 api.use("/words", words);
+api.use("/users", users);
 
 module.exports = api;
