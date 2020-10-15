@@ -45,7 +45,13 @@ words.get("/:wordId", (req, res) => {
 words.post("/", (req, res) => {
   const { slug, Word, Meaning, Sentence } = req.body;
   if (slug && Word && Meaning && Sentence) {
-    res.json({ slug, Word, Meaning, Sentence });
+    Words[slug] = {
+      Word,
+      Meaning,
+      Sentence,
+      User: ""
+    };
+    res.status(201).json("Created new word " + slug);
   } else {
     res
       .status(400)
