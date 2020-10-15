@@ -18,6 +18,9 @@ const Words = {
   }
 };
 
+// Read the body for post.
+words.use(express.json());
+
 // Adding Routes.
 words.get("/", (req, res) => {
   res.json(Words);
