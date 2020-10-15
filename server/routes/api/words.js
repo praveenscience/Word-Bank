@@ -42,5 +42,15 @@ words.get("/:wordId", (req, res) => {
     });
   }
 });
+words.post("/", (req, res) => {
+  const { slug, Word, Meaning, Sentence } = req.body;
+  if (slug && Word && Meaning && Sentence) {
+    res.json({ slug, Word, Meaning, Sentence });
+  } else {
+    res
+      .status(400)
+      .json("You should give all the values of slug, Word, Meaning, Sentence!");
+  }
+});
 
 module.exports = words;
