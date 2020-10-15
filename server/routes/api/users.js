@@ -7,13 +7,13 @@ const users = express.Router();
 users.use(express.json());
 
 const Users = {
-  Praveen: { email: "", fullname: "", password: "Hello@123" },
-  AbhiVikrant: { email: "", fullname: "", password: "1234@123" },
-  Santosh: { email: "", fullname: "", password: "12345" },
-  Ruchita: { email: "", fullname: "", password: "Carol@123" },
-  Princy: { email: "", fullname: "", password: "passw" },
-  Nagaraj: { email: "", fullname: "", password: "nagsvk123" },
-  angle: { email: "", fullname: "", password: "hello@12" }
+  Praveen: { email: "", fullname: "Praveen Kumar", password: "Hello@123" },
+  AbhiVikrant: { email: "", fullname: "Abhishek Vikrant", password: "1234@123" },
+  Santosh: { email: "", fullname: "Santosh", password: "12345" },
+  Ruchita: { email: "", fullname: "Ruchita", password: "Carol@123" },
+  Princy: { email: "", fullname: "Princy Agarwal", password: "passw" },
+  Nagaraj: { email: "", fullname: "Nagaraj", password: "nagsvk123" },
+  angle: { email: "", fullname: "Obtuse Angle", password: "hello@12" }
 };
 
 // Adding Routes.
