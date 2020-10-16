@@ -7,6 +7,8 @@ const apiRoute = require("./routes/api");
 const app = express();
 // Set a port.
 const port = 3100;
+// Read the body for post.
+app.use(express.json());
 // Routing.
 app.use("/", rootRoute);
 app.use("/api", apiRoute);

@@ -18,9 +18,6 @@ const Words = {
   }
 };
 
-// Read the body for post.
-words.use(express.json());
-
 // Adding Routes.
 words.get("/", (req, res) => {
   res.json(Words);
@@ -57,9 +54,7 @@ words.post("/", (req, res) => {
       res.status(409).json("Word already exists.");
     }
   } else {
-    res
-      .status(400)
-      .json("You should give all the values of slug, Word, Meaning, Sentence!");
+    res.status(400).json("You should give all the values of slug, Word, Meaning, Sentence!");
   }
 });
 
