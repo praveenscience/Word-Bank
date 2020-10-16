@@ -20,7 +20,10 @@ const Words = {
 
 // Adding Routes.
 words.get("/", (req, res) => {
-  res.json(Words);
+  res.json({
+    Error: false,
+    Message: Words
+  });
 });
 words.get("/:wordId", (req, res) => {
   if (Words[req.params.wordId]) {
@@ -40,6 +43,12 @@ words.get("/:wordId", (req, res) => {
   }
 });
 words.post("/", (req, res) => {
+  if (!req.session.User) {
+    res.status(403).json({
+      Error: true,
+      ErrorMessage: "Not authorised."
+    });
+  }
   const { slug, Word, Meaning, Sentence } = req.body;
   if (slug && Word && Meaning && Sentence) {
     if (!Words[slug]) {
@@ -49,12 +58,21 @@ words.post("/", (req, res) => {
         Sentence,
         User: ""
       };
-      res.status(201).json("Created new word " + slug + ".");
+      res.status(201).json({
+        Error: false,
+        Message: "Created new word " + slug + "."
+      });
     } else {
-      res.status(409).json("Word already exists.");
+      res.status(409).json({
+        Error: true,
+        ErrorMessage: "Word already exists."
+      });
     }
   } else {
-    res.status(400).json("You should give all the values of slug, Word, Meaning, Sentence!");
+    res.status(400).json({
+      Error: true,
+      ErrorMessage: "You should give all the values of slug, Word, Meaning, Sentence!"
+    });
   }
 });
 
