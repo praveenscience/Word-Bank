@@ -93,7 +93,67 @@ words.post("/", (req, res) => {
     } else {
       res.status(400).json({
         Error: true,
-        ErrorMessage: "You should give all the values of slug, Word, Meaning, Sentence!"
+        ErrorMessage:
+          "You should give all the values of slug, Word, Meaning, Sentence!"
+      });
+    }
+  }
+});
+words.put("/:wordId", (req, res) => {
+  if (!req.session.User) {
+    res.status(403).json({
+      Error: true,
+      ErrorMessage: "Not authorised."
+    });
+  } else {
+    const { slug, Word, Meaning, Sentence } = req.body;
+    const { wordId } = req.params;
+    if (slug && Word && Meaning && Sentence && wordId) {
+      if (
+        Words[wordId] &&
+        wordId !== "me" &&
+        slug !== "me" &&
+        Words[wordId].User === req.session.User.username
+      ) {
+        Words[wordId] = {
+          Word,
+          Meaning,
+          Sentence,
+          User: req.session.User.username,
+          DateCreated: Words[wordId].DateCreated
+        };
+        if (slug !== wordId) {
+          res.status(201).json({
+            Error: false,
+            Message: "Created new word " + slug + "."
+          });
+        } else {
+          res.status(202).json({
+            Error: false,
+            Message: "Updated word " + slug + "."
+          });
+        }
+      } else if (Words[wordId].User !== req.session.User.username) {
+        res.status(403).json({
+          Error: true,
+          ErrorMessage: "Cannot edit other's word."
+        });
+      } else if (!Words[wordId]) {
+        res.status(404).json({
+          Error: true,
+          ErrorMessage: "Word not found."
+        });
+      } else {
+        res.status(403).json({
+          Error: true,
+          ErrorMessage: "Cannot edit the word."
+        });
+      }
+    } else {
+      res.status(400).json({
+        Error: true,
+        ErrorMessage:
+          "You should give all the values of slug, Word, Meaning, Sentence!"
       });
     }
   }
