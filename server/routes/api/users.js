@@ -21,14 +21,29 @@ users.post("/login", (req, res) => {
   const { username, password } = req.body;
   if (username && password) {
     if (Users[username] && Users[username].password === password) {
-      res.json("Successfully authenticated as " + Users[username].fullname + ".");
+      req.session.User = { ...Users[username] };
+      delete req.session.User.password;
+      res.json({
+        User: req.session.User,
+        Error: false,
+        Message: "Successfully authenticated as " + Users[username].fullname + "."
+      });
     } else if (!Users[username]) {
-      res.status(404).json("User not found!");
+      res.status(404).json({
+        Error: true,
+        ErrorMessage: "User not found!"
+      });
     } else {
-      res.status(403).json("Invalid Username or Password!");
+      res.status(403).json({
+        Error: true,
+        ErrorMessage: "Invalid Username or Password!"
+      });
     }
   } else {
-    res.status(400).json("You should give both username and password!");
+    res.status(400).json({
+      Error: true,
+      ErrorMessage: "You should give both username and password!"
+    });
   }
 });
 module.exports = users;
