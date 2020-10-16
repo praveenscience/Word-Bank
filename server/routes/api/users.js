@@ -21,7 +21,7 @@ users.post("/login", (req, res) => {
   const { username, password } = req.body;
   if (username && password) {
     if (Users[username] && Users[username].password === password) {
-      req.session.User = { ...Users[username] };
+      req.session.User = { ...Users[username], username };
       delete req.session.User.password;
       res.json({
         User: req.session.User,

@@ -8,13 +8,13 @@ const Words = {
     Word: "Hello",
     Meaning: "Used as a greeting or to begin a telephone conversation.",
     Sentence: "Hello there, LetsGrad!",
-    User: ""
+    User: "Praveen"
   },
   world: {
     Word: "World",
     Meaning: "The earth, together with all of its countries and peoples.",
     Sentence: "He was doing his bit to save the world",
-    User: ""
+    User: "Praveen"
   }
 };
 
@@ -56,7 +56,7 @@ words.post("/", (req, res) => {
           Word,
           Meaning,
           Sentence,
-          User: ""
+          User: req.session.User.username
         };
         res.status(201).json({
           Error: false,
