@@ -48,31 +48,32 @@ words.post("/", (req, res) => {
       Error: true,
       ErrorMessage: "Not authorised."
     });
-  }
-  const { slug, Word, Meaning, Sentence } = req.body;
-  if (slug && Word && Meaning && Sentence) {
-    if (!Words[slug]) {
-      Words[slug] = {
-        Word,
-        Meaning,
-        Sentence,
-        User: ""
-      };
-      res.status(201).json({
-        Error: false,
-        Message: "Created new word " + slug + "."
-      });
+  } else {
+    const { slug, Word, Meaning, Sentence } = req.body;
+    if (slug && Word && Meaning && Sentence) {
+      if (!Words[slug]) {
+        Words[slug] = {
+          Word,
+          Meaning,
+          Sentence,
+          User: ""
+        };
+        res.status(201).json({
+          Error: false,
+          Message: "Created new word " + slug + "."
+        });
+      } else {
+        res.status(409).json({
+          Error: true,
+          ErrorMessage: "Word already exists."
+        });
+      }
     } else {
-      res.status(409).json({
+      res.status(400).json({
         Error: true,
-        ErrorMessage: "Word already exists."
+        ErrorMessage: "You should give all the values of slug, Word, Meaning, Sentence!"
       });
     }
-  } else {
-    res.status(400).json({
-      Error: true,
-      ErrorMessage: "You should give all the values of slug, Word, Meaning, Sentence!"
-    });
   }
 });
 
