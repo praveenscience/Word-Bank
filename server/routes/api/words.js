@@ -27,6 +27,25 @@ words.get("/", (req, res) => {
     Message: Words
   });
 });
+words.get("/me", (req, res) => {
+  if (!req.session.User) {
+    res.status(403).json({
+      Error: true,
+      ErrorMessage: "Not authorised."
+    });
+  } else {
+    const UserWords = {};
+    Object.keys(Words).forEach(word => {
+      if (Words[word].User === req.session.User.username) {
+        UserWords[word] = Words[word];
+      }
+    });
+    res.json({
+      Error: false,
+      Message: UserWords
+    });
+  }
+});
 words.get("/:wordId", (req, res) => {
   if (Words[req.params.wordId]) {
     res.json({
@@ -53,7 +72,7 @@ words.post("/", (req, res) => {
   } else {
     const { slug, Word, Meaning, Sentence } = req.body;
     if (slug && Word && Meaning && Sentence) {
-      if (!Words[slug]) {
+      if (!Words[slug] && slug !== "me") {
         Words[slug] = {
           Word,
           Meaning,
