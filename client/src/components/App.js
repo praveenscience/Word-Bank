@@ -6,7 +6,7 @@ import Login from "./Screens/Login";
 import Register from "./Screens/Register";
 import Welcome from "./Screens/Welcome";
 import { Link } from "react-router-dom";
-import { UserLogin } from "../services/User";
+import { UserLogin, UserRegister } from "../services/User";
 import { CheckEmail } from "../helpers/Validators";
 
 const InitialForm = {
@@ -113,12 +113,40 @@ class App extends Component {
       password === confpass &&
       CheckEmail(email.trim())
     ) {
-      // Use Server Side Logic.
+      UserRegister(username, password, fullname, email)
+        .then(res => {
+          if (res.status === 201) {
+            this.setState(
+              {
+                User: { username, fullname, email },
+                Form: InitialForm
+              },
+              this.saveState
+            );
+          }
+        })
+        .catch(err => {
+          const Form = { ...this.state.Form };
+          Form.Register.Error = [err.response.data.ErrorMessage];
+          this.setState({
+            Form
+          });
+        });
     } else {
-      if (!(username.trim().length > 3 && password.trim().length > 3)) {
-        Errors.push(
-          "Please enter both username and password with each being more than 3 characters."
-        );
+      if (username.trim().length <= 3) {
+        Errors.push("Please enter username with more than 3 characters.");
+      }
+      if (password.trim().length <= 3) {
+        Errors.push("Please enter password with more than 3 characters.");
+      }
+      if (fullname.trim().length <= 3) {
+        Errors.push("Please enter your full name with more than 3 characters.");
+      }
+      if (email.trim().length <= 3) {
+        Errors.push("Please enter your email with more than 3 characters.");
+      }
+      if (!CheckEmail(email.trim())) {
+        Errors.push("Please enter a valid email address.");
       }
       if (password !== confpass) {
         Errors.push("Both password and confirm password should match.");
