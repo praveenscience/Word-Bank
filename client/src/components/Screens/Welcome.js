@@ -22,7 +22,7 @@ const Welcome = ({ User, onChange, onSubmit }) => {
           </form>
         </>
       }
-      Title={"Welcome to Word Bank, " + User.FullName}
+      Title={"Welcome to Word Bank, " + User.fullname}
       Text="Please add your nice words here."
       className="Welcome"
     >
