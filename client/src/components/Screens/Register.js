@@ -27,9 +27,7 @@ const Register = ({ onChange, onSubmit, Values }) => {
             Label: "Your Name",
             Placeholder: "Please enter your full name.",
             Type: "text",
-            Desc:
-              "Please enter your full name so that we can call you by that.",
-            DontShow: true
+            Desc: "Please enter your full name so that we can call you by that."
           },
           {
             ID: "username",
@@ -60,19 +58,16 @@ const Register = ({ onChange, onSubmit, Values }) => {
             Label: "Email Address",
             Placeholder: "Please enter your email address.",
             Type: "email",
-            Desc: "Please enter your email address so we can send you spam.",
-            DontShow: true
+            Desc: "Please enter your email address so we can send you spam."
           }
-        ]
-          .filter(fg => !fg.DontShow)
-          .map((fg, key) => (
-            <FormGroup
-              key={key}
-              {...fg}
-              onChange={onInputChange}
-              Value={Values[fg.ID]}
-            />
-          ))}
+        ].map((fg, key) => (
+          <FormGroup
+            key={key}
+            {...fg}
+            onChange={onInputChange}
+            Value={Values[fg.ID]}
+          />
+        ))}
         <button type="submit" className="btn btn-primary">
           Register
         </button>
