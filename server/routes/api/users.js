@@ -101,7 +101,7 @@ users.post("/", (req, res) => {
         fullname,
         password
       };
-      res.json(201).json({
+      res.status(201).json({
         Error: false,
         Message: "User " + username + " created successfully."
       });
