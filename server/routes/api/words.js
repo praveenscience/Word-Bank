@@ -158,5 +158,40 @@ words.put("/:wordId", (req, res) => {
     }
   }
 });
+words.delete("/:wordId", (req, res) => {
+  if (!req.session.User) {
+    res.status(403).json({
+      Error: true,
+      ErrorMessage: "Not authorised."
+    });
+  } else {
+    const { wordId } = req.params;
+    if (
+      Words[wordId] &&
+      wordId !== "me" &&
+      Words[wordId].User === req.session.User.username
+    ) {
+      const word = Words[wordId].Word;
+      delete Words[wordId];
+      res.status(202).json({
+        Error: false,
+        Message: "Word " + word + " has been deleted."
+      });
+    } else if (!Words[wordId]) {
+      res.status(404).json({
+        Error: true,
+        ErrorMessage: "Word not found."
+      });
+    } else if (
+      wordId === "me" ||
+      Words[wordId].User !== req.session.User.username
+    ) {
+      res.status(403).json({
+        Error: true,
+        ErrorMessage: "Cannot delete the words created by others."
+      });
+    }
+  }
+});
 
 module.exports = words;
