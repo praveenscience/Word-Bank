@@ -6,6 +6,8 @@ import Login from "./Screens/Login";
 import Register from "./Screens/Register";
 import Welcome from "./Screens/Welcome";
 import { Link } from "react-router-dom";
+import { UserLogin } from "../services/User";
+import { CheckEmail } from "../helpers/Validators";
 
 const InitialForm = {
   Login: {
@@ -21,17 +23,6 @@ const InitialForm = {
     email: "",
     Error: null
   }
-};
-
-// Hardcode Username and Passwords.
-const Users = {
-  Praveen: "Hello@123",
-  AbhiVikrant: "1234@123",
-  Santosh: "12345",
-  Ruchita: "Carol@123",
-  Princy: "passw",
-  Nagaraj: "nagsvk123",
-  angle: "hello@12"
 };
 
 class App extends Component {
@@ -59,10 +50,10 @@ class App extends Component {
   handleLogin = e => {
     e.preventDefault();
     const {
-      loginusername: UserName,
+      loginusername: username,
       loginpassword: password
     } = this.state.Form.Login;
-    if (UserName.trim().length > 3 && password.trim().length > 3) {
+    if (username.trim().length > 3 && password.trim().length > 3) {
       const Form = { ...this.state.Form };
       Form.Login.Error = null;
       this.setState(
@@ -71,33 +62,27 @@ class App extends Component {
         },
         this.saveState
       );
-      if (Users[UserName] && Users[UserName] === password) {
-        this.setState(
-          {
-            User: { UserName, FullName: UserName },
-            Form: InitialForm
-          },
-          this.saveState
-        );
-      } else if (!Users[UserName]) {
-        const Form = { ...this.state.Form };
-        Form.Login.Error = "User not found.";
-        this.setState(
-          {
-            Form
-          },
-          this.saveState
-        );
-      } else {
-        const Form = { ...this.state.Form };
-        Form.Login.Error = "Invalid username and password combination.";
-        this.setState(
-          {
-            Form
-          },
-          this.saveState
-        );
-      }
+      UserLogin(username, password)
+        .then(res => {
+          this.setState(
+            {
+              User: res.data.User,
+              Form: InitialForm
+            },
+            this.saveState
+          );
+        })
+        .catch(err => {
+          const { data } = err.response;
+          const Form = { ...this.state.Form };
+          Form.Login.Error = data.ErrorMessage;
+          this.setState(
+            {
+              Form
+            },
+            this.saveState
+          );
+        });
     } else {
       const Form = { ...this.state.Form };
       Form.Login.Error =
@@ -113,29 +98,30 @@ class App extends Component {
   handleRegister = e => {
     e.preventDefault();
     const Errors = [];
-    const { username: UserName, password, confpass } = this.state.Form.Register;
+    const {
+      fullname,
+      username,
+      password,
+      confpass,
+      email
+    } = this.state.Form.Register;
     if (
-      UserName.trim().length > 3 &&
+      username.trim().length > 3 &&
       password.trim().length > 3 &&
+      fullname.trim().length > 3 &&
+      email.trim().length > 3 &&
       password === confpass &&
-      !Users[UserName]
+      CheckEmail(email.trim())
     ) {
-      Users[UserName] = password;
-      this.setState({
-        User: { UserName, FullName: UserName },
-        Form: InitialForm
-      });
+      // Use Server Side Logic.
     } else {
-      if (!(UserName.trim().length > 3 && password.trim().length > 3)) {
+      if (!(username.trim().length > 3 && password.trim().length > 3)) {
         Errors.push(
           "Please enter both username and password with each being more than 3 characters."
         );
       }
       if (password !== confpass) {
         Errors.push("Both password and confirm password should match.");
-      }
-      if (!!Users[UserName]) {
-        Errors.push("Username already exists.");
       }
       if (Errors.length > 0) {
         const Form = { ...this.state.Form };
