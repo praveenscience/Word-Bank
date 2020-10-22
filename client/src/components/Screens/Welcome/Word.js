@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 
 const Word = ({ match, Words }) => {
   const WordID = match.params.wordId;
@@ -11,7 +12,7 @@ const Word = ({ match, Words }) => {
         </h3>
         <div className="alert alert-info">
           This word has been created by <em>{Word.User}</em> on{" "}
-          <em>{Word.DateCreated}</em>.
+          <em>{moment(Word.DateCreated).format("MMMM Do YYYY, h:mm a")}</em>.
         </div>
       </section>
     );
