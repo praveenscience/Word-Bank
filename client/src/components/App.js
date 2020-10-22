@@ -8,6 +8,7 @@ import Welcome from "./Screens/Welcome";
 import { Link } from "react-router-dom";
 import { UserLogin, UserRegister } from "../services/User";
 import { CheckEmail } from "../helpers/Validators";
+import { GetWords } from "../services/Words";
 
 const InitialForm = {
   Login: {
@@ -29,7 +30,7 @@ class App extends Component {
   state = {
     User: null,
     Form: InitialForm,
-    Words: []
+    Words: {}
   };
   resetForm = () => {
     this.setState({
@@ -179,6 +180,11 @@ class App extends Component {
     if (typeof Storage !== "undefined") {
       this.setState(JSON.parse(window.localStorage.getItem("state")));
     }
+    GetWords().then(res =>
+      this.setState({
+        Words: res.data.Message
+      })
+    );
   }
   render() {
     const { User } = this.state;
