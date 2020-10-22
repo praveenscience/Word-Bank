@@ -1,8 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import Words from "../../../constants/DemoWords";
 
-const List = () => {
+const List = ({ Words }) => {
   return (
     <>
       <div className="list-group">

@@ -28,7 +28,8 @@ const InitialForm = {
 class App extends Component {
   state = {
     User: null,
-    Form: InitialForm
+    Form: InitialForm,
+    Words: []
   };
   resetForm = () => {
     this.setState({
@@ -192,7 +193,11 @@ class App extends Component {
         <ContainerRow fluid={true} className="my-3">
           {User ? (
             <div className="col-12">
-              <Welcome User={this.state.User} onSubmit={this.handleLogout} />
+              <Welcome
+                User={this.state.User}
+                onSubmit={this.handleLogout}
+                Words={this.state.Words}
+              />
             </div>
           ) : (
             <>

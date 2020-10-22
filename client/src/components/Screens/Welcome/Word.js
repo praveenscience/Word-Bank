@@ -1,7 +1,6 @@
 import React from "react";
-import Words from "../../../constants/DemoWords";
 
-const Word = ({ match }) => {
+const Word = ({ match, Words }) => {
   if (Words[match.params.wordId])
     return (
       <section className="Word">
