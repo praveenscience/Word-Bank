@@ -9,6 +9,9 @@ const Word = ({ match, Words, User, UpdateWords }) => {
   const WordID = match.params.wordId;
   const Word = Words[WordID];
   useEffect(() => {
+    if (Deleted) {
+      UpdateWords();
+    }
     setDeleteMode(false);
     setDeleted(false);
   }, [WordID]);
