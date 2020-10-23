@@ -208,6 +208,13 @@ class App extends Component {
       })
     );
   }
+  UpdateWords = () => {
+    GetWords().then(res =>
+      this.setState({
+        Words: res.data.Message
+      })
+    );
+  };
   render() {
     const { User } = this.state;
     return (
@@ -225,6 +232,7 @@ class App extends Component {
                 User={this.state.User}
                 onSubmit={this.handleLogout}
                 Words={this.state.Words}
+                UpdateWords={this.UpdateWords}
               />
             </div>
           ) : (
