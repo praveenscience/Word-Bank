@@ -44,7 +44,19 @@ const Users = {
 
 // Adding Routes.
 users.get("/", (req, res) => {
-  res.status(403).json("You can't see the users! Nananana!");
+  if (!req.session.User) {
+    res.status(403).json({
+      Error: true,
+      ErrorMessage: "User not signed in."
+    });
+  } else {
+    const Message = { ...req.session.User };
+    delete Message.password;
+    res.json({
+      Error: false,
+      Message
+    });
+  }
 });
 users.post("/login", (req, res) => {
   const { username, password } = req.body;
