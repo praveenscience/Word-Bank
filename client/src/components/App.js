@@ -6,7 +6,12 @@ import Login from "./Screens/Login";
 import Register from "./Screens/Register";
 import Welcome from "./Screens/Welcome";
 import { Link } from "react-router-dom";
-import { CheckUser, UserLogin, UserRegister } from "../services/User";
+import {
+  CheckUser,
+  UserLogin,
+  UserLogout,
+  UserRegister
+} from "../services/User";
 import { CheckEmail } from "../helpers/Validators";
 import { GetWords } from "../services/Words";
 
@@ -167,13 +172,15 @@ class App extends Component {
   };
   handleLogout = e => {
     e.preventDefault();
-    this.setState(
-      {
-        User: null,
-        Form: InitialForm
-      },
-      this.saveState
-    );
+    UserLogout().then(() => {
+      this.setState(
+        {
+          User: null,
+          Form: InitialForm
+        },
+        this.saveState
+      );
+    });
   };
   componentDidMount() {
     CheckUser()
