@@ -3,7 +3,7 @@ import moment from "moment";
 import { useState } from "react";
 import { DeleteWord } from "../../../services/Words";
 
-const Word = ({ match, Words }) => {
+const Word = ({ match, Words, User }) => {
   const [DeleteMode, setDeleteMode] = useState(false);
   const WordID = match.params.wordId;
   const Word = Words[WordID];
@@ -24,11 +24,13 @@ const Word = ({ match, Words }) => {
       <section className="Word">
         <h3>
           Word: <strong>{WordID}</strong>
-          <span className="btn-group float-right">
-            <button className="btn btn-sm btn-danger" onClick={handleDelete}>
-              {DeleteMode ? "Cancel" : "Delete"}
-            </button>
-          </span>
+          {Word.User === User.username && (
+            <span className="btn-group float-right">
+              <button className="btn btn-sm btn-danger" onClick={handleDelete}>
+                {DeleteMode ? "Cancel" : "Delete"}
+              </button>
+            </span>
+          )}
         </h3>
         {DeleteMode ? (
           <div className="alert alert-danger text-center">

@@ -34,7 +34,7 @@ const Welcome = ({ User, onChange, onSubmit, Words }) => {
           <Route path="/" exact={true} component={Intro} />
           <Route
             path="/word/:wordId"
-            render={rp => <Word {...rp} Words={Words} />}
+            render={rp => <Word {...rp} Words={Words} User={User} />}
           />
         </div>
       </div>
