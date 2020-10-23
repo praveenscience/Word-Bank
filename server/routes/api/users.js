@@ -88,6 +88,10 @@ users.post("/login", (req, res) => {
     });
   }
 });
+users.post("/logout", (req, res) => {
+  req.session.destroy();
+  res.status(204).end();
+});
 users.post("/", (req, res) => {
   const { username, password, fullname, email } = req.body;
   const Errors = [];
