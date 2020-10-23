@@ -5,7 +5,7 @@ import Intro from "./Welcome/Intro";
 import List from "./Welcome/List";
 import Word from "./Welcome/Word";
 
-const Welcome = ({ User, onChange, onSubmit, Words }) => {
+const Welcome = ({ User, onChange, onSubmit, Words, UpdateWords }) => {
   return (
     <Card
       Header={
@@ -34,7 +34,14 @@ const Welcome = ({ User, onChange, onSubmit, Words }) => {
           <Route path="/" exact={true} component={Intro} />
           <Route
             path="/word/:wordId"
-            render={rp => <Word {...rp} Words={Words} User={User} />}
+            render={rp => (
+              <Word
+                {...rp}
+                Words={Words}
+                User={User}
+                UpdateWords={UpdateWords}
+              />
+            )}
           />
         </div>
       </div>

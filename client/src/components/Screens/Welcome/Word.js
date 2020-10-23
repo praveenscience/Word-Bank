@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import moment from "moment";
 import { DeleteWord } from "../../../services/Words";
 
-const Word = ({ match, Words, User }) => {
+const Word = ({ match, Words, User, UpdateWords }) => {
   const [DeleteMode, setDeleteMode] = useState(false);
+  const [Deleted, setDeleted] = useState(false);
   const WordID = match.params.wordId;
   const Word = Words[WordID];
   useEffect(() => {
     setDeleteMode(false);
+    setDeleted(false);
   }, [WordID]);
   const handleDelete = e => {
     e.preventDefault();
@@ -16,10 +19,11 @@ const Word = ({ match, Words, User }) => {
   const handleReallyDelete = e => {
     e.preventDefault();
     DeleteWord(WordID).then(res => {
-      // Tell the user, the word has been deleted.
-      // Take back to the home page.
-      // Update the list of words.
+      setDeleted(true);
     });
+  };
+  const handleGoHome = () => {
+    UpdateWords();
   };
   if (Word)
     return (
@@ -34,7 +38,20 @@ const Word = ({ match, Words, User }) => {
             </span>
           )}
         </h3>
-        {DeleteMode && Word.User === User.username ? (
+        {Deleted ? (
+          <div className="alert alert-success text-center">
+            <p>
+              The word <strong>{Word.Word}</strong> has been deleted.
+            </p>
+            <Link
+              to="/"
+              className="btn btn-success mr-3"
+              onClick={handleGoHome}
+            >
+              Back to Home
+            </Link>
+          </div>
+        ) : DeleteMode && Word.User === User.username ? (
           <div className="alert alert-danger text-center">
             <p>
               Are you sure, you want to delete the word{" "}
