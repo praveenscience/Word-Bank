@@ -1,5 +1,6 @@
 import Axios from "axios";
 
+export const CheckUser = () => Axios.get("/api/users");
 export const UserLogin = (username, password) =>
   Axios.post("/api/users/login", { username, password });
 export const UserRegister = (fullname, username, password, email) =>
