@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import moment from "moment";
 import { DeleteWord } from "../../../services/Words";
 
@@ -6,6 +6,9 @@ const Word = ({ match, Words, User }) => {
   const [DeleteMode, setDeleteMode] = useState(false);
   const WordID = match.params.wordId;
   const Word = Words[WordID];
+  useEffect(() => {
+    setDeleteMode(false);
+  }, [WordID]);
   const handleDelete = e => {
     e.preventDefault();
     setDeleteMode(!DeleteMode);
