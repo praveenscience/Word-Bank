@@ -32,7 +32,7 @@ const Login = ({ onChange, onSubmit, Values }) => {
             onChange={onInputChange}
             Desc={
               "Please enter your " +
-              fg.Label.toLowerCase() +
+              fg.Label.replace("Login", "").toLowerCase() +
               " that you created during registration process."
             }
           />
