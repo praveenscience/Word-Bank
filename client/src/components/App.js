@@ -170,8 +170,7 @@ class App extends Component {
       }
     }
   };
-  handleLogout = e => {
-    e.preventDefault();
+  handleLogout = () => {
     UserLogout().then(() => {
       this.setState(
         {
@@ -230,7 +229,7 @@ class App extends Component {
             <div className="col-12">
               <Welcome
                 User={this.state.User}
-                onSubmit={this.handleLogout}
+                handleLogout={this.handleLogout}
                 Words={this.state.Words}
                 UpdateWords={this.UpdateWords}
               />

@@ -1,25 +1,25 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import Card from "../Bootstrap/Card";
 import Intro from "./Welcome/Intro";
 import List from "./Welcome/List";
 import Word from "./Welcome/Word";
 
-const Welcome = ({ User, onChange, onSubmit, Words, UpdateWords }) => {
+const Welcome = ({ User, handleLogout, Words, UpdateWords }) => {
   return (
     <Card
       Header={
         <>
           Welcome
-          <form
-            onChange={onChange}
-            onSubmit={onSubmit}
-            className="card-header-btn"
-          >
-            <button type="submit" className="btn btn-sm btn-danger">
+          <span className="card-header-btn">
+            <Link
+              to="/"
+              className="btn btn-sm btn-danger"
+              onClick={handleLogout}
+            >
               Logout
-            </button>
-          </form>
+            </Link>
+          </span>
         </>
       }
       Title={"Welcome to Word Bank, " + User.fullname}
