@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import moment from "moment";
-import { useState } from "react";
 import { DeleteWord } from "../../../services/Words";
 
 const Word = ({ match, Words, User }) => {
@@ -32,7 +31,7 @@ const Word = ({ match, Words, User }) => {
             </span>
           )}
         </h3>
-        {DeleteMode ? (
+        {DeleteMode && Word.User === User.username ? (
           <div className="alert alert-danger text-center">
             <p>
               Are you sure, you want to delete the word{" "}
