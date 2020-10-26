@@ -11,7 +11,10 @@ const Welcome = ({ User, handleLogout, Words, UpdateWords }) => {
       Header={
         <>
           Welcome
-          <span className="card-header-btn">
+          <span className="btn-group card-header-btn">
+            <Link to="/words/new" className="btn btn-sm btn-primary">
+              New Word
+            </Link>
             <Link
               to="/"
               className="btn btn-sm btn-danger"
