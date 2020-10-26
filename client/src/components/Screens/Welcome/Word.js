@@ -5,7 +5,6 @@ import { DeleteWord } from "../../../services/Words";
 
 const Word = ({ match, Words, User, UpdateWords }) => {
   const [DeleteMode, setDeleteMode] = useState(false);
-  const [EditMode, setEditMode] = useState(false);
   const [Deleted, setDeleted] = useState(false);
   const WordID = match.params.wordId;
   const Word = Words[WordID];
@@ -18,19 +17,11 @@ const Word = ({ match, Words, User, UpdateWords }) => {
   }, [WordID]);
   const handleDelete = e => {
     e.preventDefault();
-    if (EditMode) {
-      setEditMode(!EditMode);
-    } else {
-      setDeleteMode(!DeleteMode);
-    }
-  };
-  const handleEdit = e => {
-    e.preventDefault();
-    setEditMode(!EditMode);
+    setDeleteMode(!DeleteMode);
   };
   const handleReallyDelete = e => {
     e.preventDefault();
-    DeleteWord(WordID).then(res => {
+    DeleteWord(WordID).then(() => {
       setDeleted(true);
     });
   };
@@ -44,11 +35,14 @@ const Word = ({ match, Words, User, UpdateWords }) => {
           Word: <strong>{WordID}</strong>
           {Word.User === User.username && (
             <span className="btn-group float-right">
-              <button className="btn btn-sm btn-primary" onClick={handleEdit}>
-                {EditMode ? "Editing..." : "Edit"}
-              </button>
+              <Link
+                to={`/word/${WordID}/edit`}
+                className="btn btn-sm btn-primary"
+              >
+                Edit
+              </Link>
               <button className="btn btn-sm btn-danger" onClick={handleDelete}>
-                {DeleteMode || EditMode ? "Cancel" : "Delete"}
+                {DeleteMode ? "Cancel" : "Delete"}
               </button>
             </span>
           )}
