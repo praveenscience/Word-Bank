@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { CreateWord } from "../../../../services/Words";
 import FormGroup from "../../../Bootstrap/Forms/FormGroup";
 
-const NewWord = () => {
+const NewWord = ({ history, UpdateWords }) => {
   const [Error, setError] = useState(false);
   const [Values, setValues] = useState({
     slug: "",
@@ -26,16 +26,23 @@ const NewWord = () => {
   };
   const handleSubmit = e => {
     e.preventDefault();
-    CreateWord(Values).then(res => {
-      console.log(res);
-    });
+    CreateWord(Values)
+      .then(res => {
+        if (res.status === 201) {
+          UpdateWords();
+          history.push("/word/" + Values.slug);
+        }
+      })
+      .catch(err => {
+        setError(err.response.data.ErrorMessage);
+      });
   };
   return (
     <section className="Word">
       <h3>Create a New Word</h3>
       <p>Use the below form to create a new word.</p>
       <form onSubmit={handleSubmit}>
-        {Error && <div className="alert alert-danger">{Values.Error}</div>}
+        {Error && <div className="alert alert-danger">{Error}</div>}
         {["slug", "Word", "Meaning", "Sentence"].map((fg, key) => (
           <FormGroup
             key={key}
