@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Route, Switch } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import Card from "../Bootstrap/Card";
 import NewWord from "./Welcome/Forms/New";
 import Intro from "./Welcome/Intro";
@@ -13,7 +13,7 @@ const Welcome = ({ User, handleLogout, Words, UpdateWords }) => {
         <>
           Welcome
           <span className="btn-group card-header-btn">
-            <Link to="/word/new" className="btn btn-sm btn-primary">
+            <Link to="/words/new" className="btn btn-sm btn-primary">
               New Word
             </Link>
             <Link
@@ -36,20 +36,18 @@ const Welcome = ({ User, handleLogout, Words, UpdateWords }) => {
         </div>
         <div className="col-10">
           <Route path="/" exact={true} component={Intro} />
-          <Switch>
-            <Route path="/word/new" component={NewWord} />
-            <Route
-              path="/word/:wordId"
-              render={rp => (
-                <Word
-                  {...rp}
-                  Words={Words}
-                  User={User}
-                  UpdateWords={UpdateWords}
-                />
-              )}
-            />
-          </Switch>
+          <Route path="/words/new" component={NewWord} />
+          <Route
+            path="/word/:wordId"
+            render={rp => (
+              <Word
+                {...rp}
+                Words={Words}
+                User={User}
+                UpdateWords={UpdateWords}
+              />
+            )}
+          />
         </div>
       </div>
     </Card>
