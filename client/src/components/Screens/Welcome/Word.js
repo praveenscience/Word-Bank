@@ -5,6 +5,7 @@ import { DeleteWord } from "../../../services/Words";
 
 const Word = ({ match, Words, User, UpdateWords }) => {
   const [DeleteMode, setDeleteMode] = useState(false);
+  const [EditMode, setEditMode] = useState(false);
   const [Deleted, setDeleted] = useState(false);
   const WordID = match.params.wordId;
   const Word = Words[WordID];
@@ -17,7 +18,15 @@ const Word = ({ match, Words, User, UpdateWords }) => {
   }, [WordID]);
   const handleDelete = e => {
     e.preventDefault();
-    setDeleteMode(!DeleteMode);
+    if (EditMode) {
+      setEditMode(!EditMode);
+    } else {
+      setDeleteMode(!DeleteMode);
+    }
+  };
+  const handleEdit = e => {
+    e.preventDefault();
+    setEditMode(!EditMode);
   };
   const handleReallyDelete = e => {
     e.preventDefault();
@@ -35,9 +44,11 @@ const Word = ({ match, Words, User, UpdateWords }) => {
           Word: <strong>{WordID}</strong>
           {Word.User === User.username && (
             <span className="btn-group float-right">
-              <button className="btn btn-sm btn-primary">Edit</button>
+              <button className="btn btn-sm btn-primary" onClick={handleEdit}>
+                {EditMode ? "Editing..." : "Edit"}
+              </button>
               <button className="btn btn-sm btn-danger" onClick={handleDelete}>
-                {DeleteMode ? "Cancel" : "Delete"}
+                {DeleteMode || EditMode ? "Cancel" : "Delete"}
               </button>
             </span>
           )}
