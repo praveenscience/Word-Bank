@@ -1,17 +1,16 @@
 import React, { useState } from "react";
-import { CreateWord } from "../../../../services/Words";
+import { UpdateWord } from "../../../../services/Words";
 import FormGroup from "../../../Bootstrap/Forms/FormGroup";
 
 const EditWord = ({ history, match, UpdateWords, Words }) => {
   const [Error, setError] = useState(false);
   const Word = Words[match.params.wordId];
   const [Values, setValues] = useState({
-    slug: Word.slug,
+    slug: match.params.wordId,
     Word: Word.Word,
     Meaning: Word.Meaning,
     Sentence: Word.Sentence
   });
-  console.log(Word);
   const sluggify = word =>
     word
       .toLowerCase()
@@ -28,9 +27,9 @@ const EditWord = ({ history, match, UpdateWords, Words }) => {
   };
   const handleSubmit = e => {
     e.preventDefault();
-    CreateWord(Values)
+    UpdateWord(Values)
       .then(res => {
-        if (res.status === 201) {
+        if (res.status === 202) {
           UpdateWords();
           history.push("/word/" + Values.slug);
         }
