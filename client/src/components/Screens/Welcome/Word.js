@@ -35,6 +35,7 @@ const Word = ({ match, Words, User, UpdateWords }) => {
           Word: <strong>{WordID}</strong>
           {Word.User === User.username && (
             <span className="btn-group float-right">
+              <button className="btn btn-sm btn-primary">Edit</button>
               <button className="btn btn-sm btn-danger" onClick={handleDelete}>
                 {DeleteMode ? "Cancel" : "Delete"}
               </button>
