@@ -36,7 +36,10 @@ const Welcome = ({ User, handleLogout, Words, UpdateWords }) => {
         </div>
         <div className="col-10">
           <Route path="/" exact={true} component={Intro} />
-          <Route path="/words/new" component={NewWord} />
+          <Route
+            path="/words/new"
+            render={rp => <NewWord {...rp} UpdateWords={UpdateWords} />}
+          />
           <Route
             path="/word/:wordId"
             render={rp => (
