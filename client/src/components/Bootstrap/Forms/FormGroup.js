@@ -9,7 +9,8 @@ const FormGroup = ({
   Placeholder,
   Value,
   onChange,
-  Desc
+  Desc,
+  ReadOnly
 }) => {
   return (
     <div className={"form-group" + (className ? " " + className : "")}>
@@ -19,6 +20,7 @@ const FormGroup = ({
         className={
           "form-control" + (inputClassName ? " " + inputClassName : "")
         }
+        readOnly={ReadOnly}
         id={ID}
         name={ID}
         placeholder={Placeholder}
